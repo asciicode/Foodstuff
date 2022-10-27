@@ -23,7 +23,9 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
-    public boolean canBeBook(int userId, int day, int hour) {
+    public boolean canBeBook(int userId, String dayOfWeek, int hour) {
+        DayOfWeek dayOfWeek1 = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
+        int day = dayOfWeek1.getValue();
         long count = bookingRepository.countByUserIdAndDay(userId, day);
         if (count > 0) return false;
         List<Booking> bookingsByDayAndHour = bookingRepository.findByDayAndHour(day, hour);

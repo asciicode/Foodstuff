@@ -20,8 +20,8 @@ public class FoodstuffController {
     }
 
     @GetMapping("/book/{userId}/{day}/{hour}")
-    boolean checkIfCanBook(@PathVariable int userId, @PathVariable int day, @PathVariable int hour) {
-        return bookingService.canBeBook(userId, day, hour);
+    boolean checkIfCanBook(@PathVariable int userId, @PathVariable String dayOfWeek, @PathVariable int hour) {
+        return bookingService.canBeBook(userId, dayOfWeek, hour);
     }
 
     @GetMapping("/list/{userId}")
