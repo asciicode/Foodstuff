@@ -22,7 +22,7 @@ public class Mapper {
         BookingModel bookingModel = new BookingModel();
 //        bookingModel.setId(booking.getId());
 //        bookingModel.setUserId(booking.getUserId());
-        bookingModel.setDay(DayOfWeek.of(booking.getDay()).getDisplayName(TextStyle.SHORT, Locale.US));
+        bookingModel.setDay(DayOfWeek.of(booking.getDay()).getDisplayName(TextStyle.FULL, Locale.US));
         bookingModel.setHour(booking.getHour());
         return bookingModel;
     }
