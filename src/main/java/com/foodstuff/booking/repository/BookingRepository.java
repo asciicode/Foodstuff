@@ -12,5 +12,5 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     List<Booking> findByUserIdOrderByDayAscHourAsc(int userId);
 
-    long countByUserIdAndDayAndHour(int userId, int day, int hour);
+    long countByUserIdAndDay(int userId, int day);
 }

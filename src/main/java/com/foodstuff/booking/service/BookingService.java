@@ -24,7 +24,7 @@ public class BookingService {
     }
 
     public boolean canBeBook(int userId, int day, int hour) {
-        long count = bookingRepository.countByUserIdAndDayAndHour(userId, day, hour);
+        long count = bookingRepository.countByUserIdAndDay(userId, day);
         if (count > 0) return false;
         List<Booking> bookingsByDayAndHour = bookingRepository.findByDayAndHour(day, hour);
         Map<Integer, Long> counted = bookingsByDayAndHour.stream()
