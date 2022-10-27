@@ -24,7 +24,7 @@ public class FoodstuffController {
         return bookingService.canBeBook(userId, day, time);
     }
 
-    @GetMapping("/book/{userId}")
+    @GetMapping("/list/{userId}")
     List<BookingModel> bookByUserId(@PathVariable int userId) {
         return  bookingService.listByUserid(userId);
     }
