@@ -14,6 +14,6 @@ import lombok.Setter;
 public class BookingModel {
 //    private Long id;
 //    private Integer userId;
-    private Integer day;
+    private String day;
     private Integer hour;
 }
