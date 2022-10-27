@@ -31,6 +31,6 @@ public class FoodstuffController {
 
     @GetMapping("/time-slot/{dayOfWeek}")
     Map<Integer, Integer> timeSlotByDayOfWeek(@PathVariable String dayOfWeek) {
-        return bookingService.timeSlotByDayOfWeek(dayOfWeek);
+        return bookingService.hourSlotByDayOfWeek(dayOfWeek);
     }
 }

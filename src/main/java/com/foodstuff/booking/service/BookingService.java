@@ -23,11 +23,11 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
-    public boolean canBeBook(int userId, int day, int time) {
-        long count = bookingRepository.countByUserIdAndDayAndTime(userId, day, time);
+    public boolean canBeBook(int userId, int day, int hour) {
+        long count = bookingRepository.countByUserIdAndDayAndHour(userId, day, hour);
         if (count > 0) return false;
-        List<Booking> bookingsByDayAndTime = bookingRepository.findByDayAndTime(day, time);
-        Map<Integer, Long> counted = bookingsByDayAndTime.stream()
+        List<Booking> bookingsByDayAndHour = bookingRepository.findByDayAndHour(day, hour);
+        Map<Integer, Long> counted = bookingsByDayAndHour.stream()
                 .collect(Collectors.groupingBy(Booking::getUserId, Collectors.counting()));
         if (counted.size() > MAX_USER_SLOT) return false;
 
@@ -36,21 +36,21 @@ public class BookingService {
     }
 
     public List<BookingModel> listByUserid(int userId) {
-        List<Booking> entities = bookingRepository.findByUserIdOrderByDayAscTimeAsc(userId);
+        List<Booking> entities = bookingRepository.findByUserIdOrderByDayAscHourAsc(userId);
         return entities.stream().map((Function<Booking, BookingModel>) entity -> {
             return new Mapper().mapBookingToModel(entity);
         }).collect(Collectors.toList());
     }
 
-    public Map<Integer, Integer> timeSlotByDayOfWeek(String dayOfWeek) {
+    public Map<Integer, Integer> hourSlotByDayOfWeek(String dayOfWeek) {
         DayOfWeek dayOfWeek1 = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
-        List<Booking> entities = bookingRepository.findByDayOrderByTime(dayOfWeek1.ordinal());
+        List<Booking> entities = bookingRepository.findByDayOrderByHour(dayOfWeek1.ordinal());
         Map<Integer, Integer> returnMap = new HashMap<>();
         for (Booking booking : entities) {
-            if (returnMap.containsKey(booking.getTime())) {
-                returnMap.put(booking.getTime(), returnMap.get(booking.getTime()) + 1);
+            if (returnMap.containsKey(booking.getHour())) {
+                returnMap.put(booking.getHour(), returnMap.get(booking.getHour()) + 1);
             } else {
-                returnMap.put(booking.getTime(), 1);
+                returnMap.put(booking.getHour(), 1);
             }
         }
         return returnMap;
@@ -61,19 +61,19 @@ public class BookingService {
         Booking booking = new Booking();
         booking.setUserId(2);
         booking.setDay(1);
-        booking.setTime(1);
+        booking.setHour(1);
         list.add(booking);
 
         booking = new Booking();
         booking.setUserId(2);
         booking.setDay(1);
-        booking.setTime(1);
+        booking.setHour(1);
         list.add(booking);
 
         booking = new Booking();
         booking.setUserId(3);
         booking.setDay(1);
-        booking.setTime(1);
+        booking.setHour(1);
         list.add(booking);
 
         Map<Integer, Long> counted = list.stream()

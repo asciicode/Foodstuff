@@ -9,7 +9,7 @@ public class Mapper {
 //        booking.setId(bookingModel.getId());
 //        booking.setUserId(bookingModel.getUserId());
         booking.setDay(bookingModel.getDay());
-        booking.setTime(bookingModel.getTime());
+        booking.setHour(bookingModel.getHour());
         return booking;
     }
 
@@ -18,7 +18,7 @@ public class Mapper {
 //        bookingModel.setId(booking.getId());
 //        bookingModel.setUserId(booking.getUserId());
         bookingModel.setDay(booking.getDay());
-        bookingModel.setTime(booking.getTime());
+        bookingModel.setHour(booking.getHour());
         return bookingModel;
     }
 

@@ -28,6 +28,6 @@ public class Booking {
     @Column(name = "userId")
     private Integer userId;
     private Integer day;
-    private Integer time;
+    private Integer hour;
 
 }
