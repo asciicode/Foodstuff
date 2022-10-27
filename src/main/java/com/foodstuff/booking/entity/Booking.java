@@ -25,7 +25,6 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "userId")
     private Integer userId;
     private Integer day;
     private Integer hour;
