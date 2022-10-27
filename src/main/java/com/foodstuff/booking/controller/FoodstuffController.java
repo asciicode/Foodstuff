@@ -19,9 +19,9 @@ public class FoodstuffController {
         this.bookingService = bookingService;
     }
 
-    @GetMapping("/book/{userId}/{day}/{time}")
-    boolean checkIfCanBook(@PathVariable int userId, @PathVariable int day, @PathVariable int time) {
-        return bookingService.canBeBook(userId, day, time);
+    @GetMapping("/book/{userId}/{day}/{hour}")
+    boolean checkIfCanBook(@PathVariable int userId, @PathVariable int day, @PathVariable int hour) {
+        return bookingService.canBeBook(userId, day, hour);
     }
 
     @GetMapping("/list/{userId}")
