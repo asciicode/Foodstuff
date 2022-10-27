@@ -13,8 +13,8 @@ public class Mapper {
         Booking booking = new Booking();
 //        booking.setId(bookingModel.getId());
 //        booking.setUserId(bookingModel.getUserId());
-//        booking.setDay(bookingModel.getDay());
-        booking.setHour(bookingModel.getHour());
+//        booking.setDay1(bookingModel.getDay1());
+        booking.setTime1(bookingModel.getTime());
         return booking;
     }
 
@@ -22,8 +22,8 @@ public class Mapper {
         BookingModel bookingModel = new BookingModel();
 //        bookingModel.setId(booking.getId());
 //        bookingModel.setUserId(booking.getUserId());
-        bookingModel.setDay(DayOfWeek.of(booking.getDay()).getDisplayName(TextStyle.FULL, Locale.US));
-        bookingModel.setHour(booking.getHour());
+        bookingModel.setDay(DayOfWeek.of(booking.getDay1()).getDisplayName(TextStyle.FULL, Locale.US));
+        bookingModel.setTime(booking.getTime1());
         return bookingModel;
     }
 

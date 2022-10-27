@@ -15,5 +15,5 @@ public class BookingModel {
 //    private Long id;
 //    private Integer userId;
     private String day;
-    private Integer hour;
+    private Integer time;
 }

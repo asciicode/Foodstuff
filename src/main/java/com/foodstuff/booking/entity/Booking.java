@@ -26,7 +26,7 @@ public class Booking {
     @Column(name = "id", nullable = false)
     private Long id;
     private Integer userId;
-    private Integer day;
-    private Integer hour;
+    private Integer day1;
+    private Integer time1;
 
 }
