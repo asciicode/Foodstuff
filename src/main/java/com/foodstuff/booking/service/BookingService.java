@@ -42,7 +42,7 @@ public class BookingService {
         }).collect(Collectors.toList());
     }
 
-    public Map<Integer, Integer> hourSlotByDayOfWeek(String dayOfWeek) {
+    public Map<Integer, Integer> timeSlotByDayOfWeek(String dayOfWeek) {
         DayOfWeek dayOfWeek1 = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
         List<Booking> entities = bookingRepository.findByDayOrderByHour(dayOfWeek1.ordinal());
         Map<Integer, Integer> returnMap = new HashMap<>();
