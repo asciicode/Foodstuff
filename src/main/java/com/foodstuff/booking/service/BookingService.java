@@ -44,7 +44,7 @@ public class BookingService {
 
     public Map<Integer, Integer> timeSlotByDayOfWeek(String dayOfWeek) {
         DayOfWeek dayOfWeek1 = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
-        List<Booking> entities = bookingRepository.findByDayOrderByHour(dayOfWeek1.ordinal());
+        List<Booking> entities = bookingRepository.findByDayOrderByHour(dayOfWeek1.ordinal() + 1);
         Map<Integer, Integer> returnMap = new HashMap<>();
         for (Booking booking : entities) {
             if (returnMap.containsKey(booking.getHour())) {
