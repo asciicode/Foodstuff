@@ -12,8 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BookingModel {
-    private Long id;
-    private Integer userId;
+//    private Long id;
+//    private Integer userId;
     private Integer day;
     private Integer time;
 }
